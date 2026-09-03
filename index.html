@@ -1,86 +1,960 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VidoStatus - Our Apps</title>
+    <title>VidoStatus - Official Mobile Apps & Games</title>
+    <meta name="description" content="Explore top-rated mobile games, AI utilities, and creative lifestyle applications crafted by VidoStatus. Available on Google Play Store.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 40px 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
-        h1 { color: #1a1a1a; margin-bottom: 5px; font-size: 22px; letter-spacing: 0.5px; }
-        .subtitle { color: #6e6e73; font-size: 14px; margin-bottom: 30px; }
+        /* Modern Light Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 35px -10px rgba(99, 102, 241, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+        }
+        .badge-gradient {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.12));
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
         
-        .app-list { text-align: left; }
-        .app-card { background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; margin-bottom: 12px; display: flex; align-items: center; transition: all 0.2s ease; cursor: default; }
-        .app-card:hover { transform: scale(1.02); border-color: #007aff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        
-        .app-icon { width: 55px; height: 55px; border-radius: 12px; margin-right: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 22px; flex-shrink: 0; }
-        .app-info { flex-grow: 1; }
-        .app-name { font-weight: 600; color: #1d1d1f; font-size: 17px; display: block; margin-bottom: 2px; }
-        .app-category { font-size: 12px; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; }
-
-        /* App Specific Colors */
-        .bg-fruit { background: linear-gradient(135deg, #ff4757, #ff6b81); }
-        .bg-word { background: linear-gradient(135deg, #ffa502, #eccc68); }
-        .bg-wedding { background: linear-gradient(135deg, #70a1ff, #1e90ff); }
-
-        .footer { margin-top: 35px; font-size: 12px; color: #bdc3c7; border-top: 1px solid #f2f2f2; padding-top: 20px; }
-        .hidden-link { display: none; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
 
-<div class="container">
-    <h1>VidoStatus</h1>
-    <div class="subtitle">Official App Portfolio</div>
-
-    <div class="app-list">
-        <div class="app-card">
-            <div class="app-icon bg-fruit">🍎</div>
-            <div class="app-info">
-                <span class="app-name">Fruit Slice Hero</span>
-                <span class="app-category">Arcade Game</span>
-            </div>
-        </div>
-
-        <div class="app-card">
-            <div class="app-icon bg-word">W</div>
-            <div class="app-info">
-                <span class="app-name">Word Connect</span>
-                <span class="app-category">Puzzle Game</span>
-            </div>
-        </div>
-
-        <div class="app-card">
-            <div class="app-icon bg-wedding">💍</div>
-            <div class="app-info">
-                <span class="app-name">Wedding Invitation Maker</span>
-                <span class="app-category">Graphics & Design</span>
-            </div>
-        </div>
-        <div class="app-card">
-            <div class="app-icon bg-wedding">M</div>
-            <div class="app-info">
-                <span class="app-name">Cross Math Brain Puzzle Gamesr</span>
-                <span class="app-category">Puzzle Game</span>
-            </div>
-        </div>
-        <div class="app-card">
-    <div class="app-icon" style="background: linear-gradient(135deg, #4cd137, #44bd32);">W</div>
-    <div class="app-info">
-        <span class="app-name">Word Find Pro</span>
-        <span class="app-category">Word Search Game</span>
-    </div>
-</div>
+    <!-- Ambient Glowing Background Spheres (Light Mode Theme) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-indigo-200/50 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-1/4 -right-40 w-[34rem] h-[34rem] bg-purple-200/40 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-10 left-1/3 w-[30rem] h-[30rem] bg-pink-100/60 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 4s;"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#64748b15_1px,transparent_1px)] [background-size:24px_24px] opacity-70"></div>
     </div>
 
-    <div class="footer">
-        © 2026 VidoStatus<br>
-        Professional App Solutions
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Brand -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-shapes text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-display font-bold text-2xl tracking-tight text-slate-900">VidoStatus</span>
+                    <span class="block text-[11px] font-bold text-brand-600 tracking-wider uppercase -mt-0.5">App Studio</span>
+                </div>
+            </a>
+
+            <!-- Quick Links / CTA -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <a href="https://play.google.com/store/apps/developer?id=VidoStatus" target="_blank" rel="noopener noreferrer" 
+                   class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 hover:border-slate-300 transition-all shadow-sm">
+                    <i class="fa-brands fa-google-play text-emerald-600"></i>
+                    <span>Play Store</span>
+                </a>
+                
+                <a href="#apps-section" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 shadow-lg shadow-brand-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                    <span>Explore Apps</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10">
+
+        <!-- Hero Section -->
+        <section class="pt-12 pb-14 lg:pt-20 lg:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+            
+            <!-- Live Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full badge-gradient text-brand-700 text-xs sm:text-sm font-semibold mb-8 animate-float shadow-sm">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                </span>
+                <span>Official App Showcase • 7 Active Apps</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight max-w-4xl mx-auto leading-[1.12] mb-6 text-slate-900">
+                Next-Gen Mobile Experiences Crafted by <span class="bg-gradient-to-r from-brand-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">VidoStatus</span>
+            </h1>
+
+            <p class="text-slate-600 text-base sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                Discover our curated portfolio of mind-training puzzle games, AI lifestyle assistants, captivating fictions, and creative design tools.
+            </p>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-2">
+                <div class="glass-card rounded-2xl p-4 sm:p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 mb-1">7+</div>
+                    <div class="text-xs sm:text-sm text-slate-500 font-semibold">Published Apps</div>
+                </div>
+                <div class="glass-card rounded-2xl p-4 sm:p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 mb-1">10K+</div>
+                    <div class="text-xs sm:text-sm text-slate-500 font-semibold">Global Installs</div>
+                </div>
+                <div class="glass-card rounded-2xl p-4 sm:p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 mb-1 flex items-center justify-center gap-1.5">
+                        4.8 <i class="fa-solid fa-star text-amber-500 text-lg"></i>
+                    </div>
+                    <div class="text-xs sm:text-sm text-slate-500 font-semibold">Avg. App Rating</div>
+                </div>
+                <div class="glass-card rounded-2xl p-4 sm:p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-emerald-600 mb-1">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-500 font-semibold">Safe & Verified</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Apps Portfolio Section -->
+        <section id="apps-section" class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <!-- Section Header & Filter Toolbar -->
+            <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-200">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900 flex items-center gap-3">
+                        <span>Our Featured Apps</span>
+                        <span id="apps-count-badge" class="px-3 py-0.5 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">7 Apps</span>
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-1">Click on any app card to view full details, screenshots, and direct download links.</p>
+                </div>
+
+                <!-- Live Search Bar -->
+                <div class="w-full md:w-80 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Search games, AI, novels..." 
+                           class="w-full pl-11 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all shadow-sm">
+                    <button id="clear-search" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 p-1">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+                <button class="filter-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-brand-600 text-white shadow-md shadow-brand-600/25" data-category="all">
+                    <i class="fa-solid fa-layer-group mr-1.5"></i> All Apps
+                </button>
+                <button class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 shadow-sm" data-category="puzzle">
+                    <i class="fa-solid fa-puzzle-piece mr-1.5 text-amber-500"></i> Puzzle & Brain
+                </button>
+                <button class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 shadow-sm" data-category="arcade">
+                    <i class="fa-solid fa-gamepad mr-1.5 text-rose-500"></i> Arcade & Action
+                </button>
+                <button class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 shadow-sm" data-category="ai">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-pink-500"></i> AI & Health
+                </button>
+                <button class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 shadow-sm" data-category="books">
+                    <i class="fa-solid fa-book-open mr-1.5 text-sky-500"></i> Books & Novels
+                </button>
+                <button class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 shadow-sm" data-category="events">
+                    <i class="fa-solid fa-envelope-open-text mr-1.5 text-emerald-500"></i> Events & Design
+                </button>
+            </div>
+
+            <!-- Apps Grid -->
+            <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- App cards injected dynamically by JavaScript -->
+            </div>
+
+            <!-- No Results Placeholder -->
+            <div id="no-results" class="hidden text-center py-16 px-4 glass-card rounded-3xl max-w-md mx-auto my-8">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-1">No Applications Found</h3>
+                <p class="text-slate-500 text-sm mb-5">We couldn't find any app matching your search criteria.</p>
+                <button id="reset-filter-btn" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold shadow-md">
+                    Reset Filters
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Studio Features Highlight -->
+        <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="max-w-3xl">
+                    <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Why Choose VidoStatus Apps</span>
+                    <h2 class="text-2xl sm:text-4xl font-display font-extrabold text-slate-900 mt-2 mb-4">
+                        Built with Passion, Optimized for Seamless Performance
+                    </h2>
+                    <p class="text-slate-600 text-base mb-8 leading-relaxed">
+                        Every application and game is crafted with high-performance engines, intuitive user experience, and regular updates to ensure delightful daily engagement.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-brand-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4 class="text-slate-900 font-bold text-base mb-2">Privacy & Security</h4>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Strict adherence to Google Play data safety protocols with zero intrusive tracking.</p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <h4 class="text-slate-900 font-bold text-base mb-2">Lightning Fast & Offline</h4>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Optimized battery and storage efficiency, with robust offline gameplay features.</p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6">
+                        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </div>
+                        <h4 class="text-slate-900 font-bold text-base mb-2">Frequent Updates</h4>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Fresh levels, AI features, new books, and design templates added regularly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white relative z-10 pt-14 pb-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-slate-200">
+                
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-purple-600 flex items-center justify-center shadow-md">
+                        <i class="fa-solid fa-shapes text-white"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-xl text-slate-900">VidoStatus</span>
+                        <p class="text-xs text-slate-500">Mobile Applications & Games Studio</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600 font-medium">
+                    <a href="#apps-section" class="hover:text-brand-600 transition-colors">Our Apps</a>
+                    <a href="https://play.google.com/store/apps/developer?id=VidoStatus" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+                        <i class="fa-brands fa-google-play text-xs text-emerald-600"></i> Google Play Store
+                    </a>
+                    <a href="mailto:support@vidostatus.com" class="hover:text-brand-600 transition-colors">Developer Contact</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left font-medium">
+                <div>
+                    © 2026 VidoStatus Studio. All rights reserved. Google Play is a trademark of Google LLC.
+                </div>
+                <div class="flex items-center gap-4">
+                    <span>Designed for Excellence</span>
+                    <span>•</span>
+                    <a href="#" class="hover:text-slate-800">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-slate-800">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive App Details Modal (Light Theme) -->
+    <div id="app-modal-backdrop" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div id="app-modal-dialog" class="glass-modal rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative transition-all duration-300 transform scale-95 opacity-0 my-auto">
+            
+            <!-- Modal Header Banner -->
+            <div id="modal-banner-bg" class="h-44 sm:h-52 w-full relative p-6 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent z-10"></div>
+                
+                <!-- Close Button & Category Badge -->
+                <div class="relative z-20 flex justify-between items-center">
+                    <span id="modal-badge-category" class="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-white border border-white/25">
+                        Category
+                    </span>
+                    <button id="modal-close-btn" class="w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all border border-white/20">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- App Identity in Banner Bottom -->
+                <div class="relative z-20 flex items-end gap-4 translate-y-2">
+                    <div id="modal-app-icon" class="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl p-1 bg-white border-2 border-white/80 shadow-2xl flex-shrink-0 flex items-center justify-center overflow-hidden">
+                        <!-- Icon injected -->
+                    </div>
+                    <div class="pb-1 overflow-hidden">
+                        <h3 id="modal-app-title" class="text-xl sm:text-2xl font-display font-extrabold text-white truncate leading-tight">
+                            App Title
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-200 font-medium flex items-center gap-1.5 mt-0.5">
+                            <i class="fa-solid fa-certificate text-[11px] text-brand-300"></i>
+                            <span>VidoStatus Official</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Body Content -->
+            <div class="p-6 sm:p-8 pt-5 bg-white">
+                
+                <!-- Stats Row -->
+                <div class="grid grid-cols-4 gap-2 sm:gap-3 py-3 px-2 bg-slate-50 border border-slate-200 rounded-2xl text-center my-2">
+                    <div>
+                        <div id="modal-stat-rating" class="text-sm sm:text-base font-bold text-slate-900 flex items-center justify-center gap-1">
+                            4.8 <i class="fa-solid fa-star text-amber-500 text-xs"></i>
+                        </div>
+                        <div class="text-[11px] text-slate-500 font-medium">Rating</div>
+                    </div>
+                    <div>
+                        <div id="modal-stat-downloads" class="text-sm sm:text-base font-bold text-slate-900">1.9K+</div>
+                        <div class="text-[11px] text-slate-500 font-medium">Downloads</div>
+                    </div>
+                    <div>
+                        <div id="modal-stat-age" class="text-sm sm:text-base font-bold text-slate-900">3+</div>
+                        <div class="text-[11px] text-slate-500 font-medium">Rated For</div>
+                    </div>
+                    <div>
+                        <div id="modal-stat-monetization" class="text-sm sm:text-base font-bold text-emerald-600">Free</div>
+                        <div class="text-[11px] text-slate-500 font-medium">Contains Ads</div>
+                    </div>
+                </div>
+
+                <!-- Description & Features -->
+                <div class="mt-5 mb-6">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">About This App</h4>
+                    <p id="modal-app-description" class="text-slate-700 text-sm sm:text-base leading-relaxed mb-4">
+                        App description goes here...
+                    </p>
+                    
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">Key Highlights</h4>
+                    <ul id="modal-app-features" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700">
+                        <!-- Injected feature points -->
+                    </ul>
+                </div>
+
+                <!-- Action CTA Bar -->
+                <div class="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-slate-200">
+                    <a id="modal-playstore-link" href="#" target="_blank" rel="noopener noreferrer" 
+                       class="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                        <i class="fa-brands fa-google-play text-lg"></i>
+                        <span>Get on Google Play</span>
+                    </a>
+
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <button id="modal-share-btn" class="flex-1 sm:flex-none py-3.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-share-nodes text-brand-600"></i>
+                            <span class="sm:hidden">Share</span>
+                        </button>
+                        <button id="modal-copy-link-btn" class="flex-1 sm:flex-none py-3.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all" title="Copy Store Link">
+                            <i class="fa-regular fa-copy text-brand-600"></i>
+                            <span class="sm:hidden">Copy Link</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
-   
-</div>
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 glass-modal border border-slate-200 px-5 py-3.5 rounded-2xl text-sm text-slate-800 flex items-center gap-3 shadow-2xl translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
+        <span id="toast-message" class="font-semibold">Notification message</span>
+    </div>
 
+    <!-- Application Data & Logic -->
+    <script>
+        // Full Apps Database with Google Play Store URLs & Custom Icon Images
+        // Tip: You can paste GitHub raw URLs (e.g. 'https://raw.githubusercontent.com/user/repo/main/icons/app1.png')
+        // or local folder paths (e.g. 'icons/word-connect.png') into 'iconImg'!
+        const APPS_DATABASE = [
+            {
+                id: 'word-connect',
+                title: 'Word Connect Puzzle Offline',
+                category: 'puzzle',
+                categoryLabel: 'Word & Brain Puzzle',
+                badgeText: 'Trending',
+                rating: 4.8,
+                installs: '1K+',
+                age: 'Everyone',
+                ageGroup: '4 Months Old',
+                hasAds: true,
+                hasIap: true,
+                url: 'https://play.google.com/store/apps/details?id=com.puzzles.wordconnectgame',
+                iconImg: 'https://play-lh.googleusercontent.com/LHKzCy4J0QTaIOyQJl3n0r6VH3xrZp3wrzDYo5ocSY_CSEPRKYvYddZuMIbjf-S4bJ3S4HUiJtC6x1oEiABY=w240-h480-rw',
+                iconGradient: 'from-amber-500 via-orange-500 to-yellow-400',
+                bannerGradient: 'from-amber-600 via-orange-600 to-amber-800',
+                iconGlyph: 'W',
+                iconBgClass: 'bg-gradient-to-tr from-amber-500 to-orange-500',
+                shortDesc: 'Connect letters, discover hidden words, and solve thousands of addicting brain-training puzzle levels offline.',
+                fullDesc: 'Word Connect Puzzle Offline is designed to exercise your brain, improve vocabulary, and provide endless relaxation. Swipe letter tiles to form words, uncover bonus words for extra rewards, and conquer increasingly challenging levels without needing an internet connection.',
+                features: [
+                    'Over 2,000+ hand-crafted word levels',
+                    '100% Offline gameplay - play anywhere',
+                    'Daily brain challenge rewards & bonuses',
+                    'No time limits - smooth relaxing experience'
+                ],
+                tags: ['Word Game', 'Offline', 'Brain Training', 'Vocabulary']
+            },
+            {
+                id: 'cross-math',
+                title: 'Cross Math Brain Puzzle Games',
+                category: 'puzzle',
+                categoryLabel: 'Math & Logic Puzzle',
+                badgeText: 'Popular',
+                rating: 4.9,
+                installs: '1.7K+',
+                age: 'Everyone',
+                ageGroup: '3 Months Old',
+                hasAds: true,
+                hasIap: true,
+                url: 'https://play.google.com/store/apps/details?id=com.crossmath.number.puzzle.challenge.daily.brain',
+                iconImg: 'https://play-lh.googleusercontent.com/uH_qJfdMZM4KgttT9OvXG_6EgBjaRqeOOm89-KSG1kTVyLYtc6aPgYP6ZH6SA7l2IEv3chcP-KeJIyy5ZQR7lg=w240-h480-rw',
+                iconGradient: 'from-indigo-600 via-purple-600 to-violet-500',
+                bannerGradient: 'from-indigo-600 via-purple-700 to-brand-800',
+                iconGlyph: '∑',
+                iconBgClass: 'bg-gradient-to-tr from-indigo-600 to-purple-600',
+                shortDesc: 'Crossword meets math logic! Solve addition, subtraction, multiplication, and division equations in engaging grid puzzles.',
+                fullDesc: 'Cross Math is a revolutionary math crossword puzzle game. Fill in the numbers and arithmetic operators to solve row and column math equations. Perfect for all ages looking to sharpen logic, arithmetic speed, and cognitive agility.',
+                features: [
+                    'Multi-difficulty modes (Easy to Expert)',
+                    'Daily Math Challenge with trophies',
+                    'Interactive hints and undo options',
+                    'Statistics tracker for mental progress'
+                ],
+                tags: ['Math Puzzle', 'Logic Grid', 'IQ Boost', 'Crossword']
+            },
+            {
+                id: 'word-search-pro',
+                title: 'Word Search Game Word Find Pro',
+                category: 'puzzle',
+                categoryLabel: 'Word Search Game',
+                badgeText: 'Top Rated',
+                rating: 4.9,
+                installs: '1.9K+',
+                age: 'Everyone',
+                ageGroup: '3 Months Old',
+                hasAds: true,
+                hasIap: true,
+                url: 'https://play.google.com/store/apps/developer?id=VidoStatus',
+                iconImg: 'https://play-lh.googleusercontent.com/7CI6AdxElRcwfgV7jeHWLOV5xSkq5-v2NYSF2bHZnKbSY6cQeH37llsOYeWlrFpdQ5gLpDSK0cuW9bdtB7A5okY=w240-h480-rw',
+                iconGradient: 'from-blue-500 via-indigo-600 to-cyan-500',
+                bannerGradient: 'from-blue-600 via-indigo-700 to-sky-800',
+                iconGlyph: '🔍',
+                iconBgClass: 'bg-gradient-to-tr from-blue-600 to-cyan-600',
+                shortDesc: 'Find hidden words across hundreds of themed word search boards with beautiful visual themes and relaxing sounds.',
+                fullDesc: 'Word Search Word Find Pro delivers an ultra-smooth word searching experience with rich vocabulary categories, colorful highlighting, and soothing aesthetics. Perfect for de-stressing while keeping your brain active.',
+                features: [
+                    '50+ diverse word themes (Animals, Food, Travel, Science)',
+                    'Dynamic grid generation for unlimited replay',
+                    'Magnifier & hint tools for tough words',
+                    'Eye-care night mode & custom themes'
+                ],
+                tags: ['Word Search', 'Relaxation', 'Vocabulary', 'Brain Puzzle']
+            },
+            {
+                id: 'momwell-ai',
+                title: 'MomWell AI Pregnancy + Tracker',
+                category: 'ai',
+                categoryLabel: 'AI & Parenting / Health',
+                badgeText: 'AI Powered',
+                rating: 4.9,
+                installs: '1K+',
+                age: 'Everyone',
+                ageGroup: '1 Month Old',
+                hasAds: true,
+                hasIap: true,
+                url: 'https://play.google.com/store/apps/details?id=com.momwell.pregnancy.pregnancytracker',
+                iconImg: 'https://play-lh.googleusercontent.com/hdCQKP8eZV-hU1EgEeD8ifUtu__sPcYRZJmHu9RE7JsjAbYO6L1YbKYb4ZnODhvHvEtycq8uvzIBcT9am6EZIg=w240-h480-rw',
+                iconGradient: 'from-pink-500 via-rose-500 to-fuchsia-600',
+                bannerGradient: 'from-pink-600 via-rose-600 to-purple-700',
+                iconGlyph: '🌸',
+                iconBgClass: 'bg-gradient-to-tr from-pink-500 to-rose-500',
+                shortDesc: 'Your intelligent journey to motherhood. AI pregnancy assistant, weekly baby size visualization, and wellness tracker.',
+                fullDesc: 'MomWell is an all-in-one AI companion for expecting mothers. Track your baby’s weekly milestones with 3D size comparisons, monitor symptoms, kick counters, contraction timers, and get personalized instant answers from our maternal health AI guidance.',
+                features: [
+                    '24/7 AI Pregnancy Assistant & symptom guide',
+                    'Week-by-week baby development & 3D fruits comparisons',
+                    'Contraction counter & kick tracking tools',
+                    'Personalized maternal wellness tips & affirmations'
+                ],
+                tags: ['AI Tracker', 'Pregnancy', 'Motherhood', 'Health']
+            },
+            {
+                id: 'fruit-slash-hero',
+                title: 'Fruit Slash Hero – Arcade Game',
+                category: 'arcade',
+                categoryLabel: 'Arcade & Action',
+                badgeText: 'Juicy Action',
+                rating: 4.7,
+                installs: '1K+',
+                age: 'Everyone',
+                ageGroup: '4 Months Old',
+                hasAds: true,
+                hasIap: true,
+                url: 'https://play.google.com/store/apps/details?id=com.fruit.ninja.slicegame.hero',
+                iconImg: 'https://play-lh.googleusercontent.com/yX85jCnhKyoef5WWqH19G7B6iBoGeZ_YVv_gZn9rWQZYOoXwG3L1j593orQb9qoRA71UJBJV-dHCV9f38y11=w240-h480-rw',
+                iconGradient: 'from-red-500 via-orange-500 to-emerald-500',
+                bannerGradient: 'from-red-600 via-orange-600 to-amber-700',
+                iconGlyph: '🍉',
+                iconBgClass: 'bg-gradient-to-tr from-red-500 to-orange-500',
+                shortDesc: 'Fast-paced juicy fruit slicing action! Slice fresh fruits, dodge bombs, unlock unique blades, and score insane combos.',
+                fullDesc: 'Fruit Slash Hero brings intense finger-swiping fun with ultra-fluid physics and vibrant particle explosions. Slice watermelons, apples, and pineapples in classic, arcade, and zen modes while competing for the ultimate high score.',
+                features: [
+                    'Fluid slice physics with vibrant splatter effects',
+                    'Multiple game modes: Classic, Arcade & Frenzy',
+                    'Unlockable blades with special powers',
+                    'Global leaderboards & combo multipliers'
+                ],
+                tags: ['Fruit Slicing', 'Arcade', 'Action', 'Casual Fun']
+            },
+            {
+                id: 'storyread-novels',
+                title: 'StoryRead: Fictions & Novels',
+                category: 'books',
+                categoryLabel: 'Books & Reference / Novels',
+                badgeText: '5.1K+ Reads',
+                rating: 4.8,
+                installs: '5.1K+',
+                age: 'Teen',
+                ageGroup: '2 Months Old',
+                hasAds: true,
+                hasIap: true,
+                url: 'https://play.google.com/store/apps/details?id=com.novelverse.read.books.stories',
+                iconImg: 'https://play-lh.googleusercontent.com/OdWuOZ9qnHqEvgaF4Wh2csh5AKD1hhwzMG--BsWfyXbV8u0xSjk5Dvj3V9M8Gjf_gbn13kP_JuBTiDgXPGRk=s48-rw',
+                iconGradient: 'from-purple-600 via-indigo-600 to-blue-500',
+                bannerGradient: 'from-purple-600 via-indigo-700 to-blue-800',
+                iconGlyph: '📖',
+                iconBgClass: 'bg-gradient-to-tr from-purple-600 to-indigo-600',
+                shortDesc: 'Immerse yourself in thousands of trending web novels, romance stories, fantasy sagas, and bite-sized fiction.',
+                fullDesc: 'StoryRead is the premier reading app for novel enthusiasts. Explore millions of pages spanning billionaire romance, werewolf tales, fantasy adventures, and suspense thrillers with customizable reading fonts, day/night mode, and offline chapter caching.',
+                features: [
+                    'Thousands of free and trending novel chapters',
+                    'Daily story updates from top fiction authors',
+                    'Customizable reader: fonts, background colors & auto-scroll',
+                    'Download chapters for comfortable offline reading'
+                ],
+                tags: ['Web Novels', 'Romance', 'E-Books', 'Fiction']
+            },
+            {
+                id: 'wedding-invitation-maker',
+                title: 'Wedding Invitation Maker',
+                category: 'events',
+                categoryLabel: 'Graphics & Design / Events',
+                badgeText: 'Essential',
+                rating: 4.8,
+                installs: '1K+',
+                age: 'Everyone',
+                ageGroup: '1 Year Active',
+                hasAds: true,
+                hasIap: false,
+                url: 'https://play.google.com/store/apps/details?id=com.invitation.savethedate',
+                iconImg: 'https://play-lh.googleusercontent.com/sAzIrn7sNDn_DwUXEsMzAZWAhKWTazsEwa_U3xkWmqKjOkf2svaPbiB9vPurJdZcufoShg1zhLycTEvBPgT-kg=w240-h480-rw',
+                iconGradient: 'from-rose-400 via-pink-500 to-amber-300',
+                bannerGradient: 'from-rose-500 via-pink-600 to-red-600',
+                iconGlyph: '💌',
+                iconBgClass: 'bg-gradient-to-tr from-rose-500 to-pink-500',
+                shortDesc: 'Create breathtaking custom wedding invitation cards, save-the-date cards, and RSVP greetings in minutes.',
+                fullDesc: 'Design elegant wedding invitations with professional floral templates, royal typography, customizable photo frames, and sticker embellishments. Export high-resolution print-ready cards or share digital invitations instantly with guests.',
+                features: [
+                    '500+ Luxury wedding and Save-The-Date templates',
+                    'Customizable typography, gold foil textures & floral borders',
+                    'Add your couple photos with instant background blending',
+                    'Instant HD export & WhatsApp sharing integration'
+                ],
+                tags: ['Invitation Maker', 'Save The Date', 'Graphic Design', 'Wedding']
+            }
+        ];
+
+        // State variables
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let activeApp = null;
+
+        // DOM Elements
+        const appsGrid = document.getElementById('apps-grid');
+        const appsCountBadge = document.getElementById('apps-count-badge');
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const noResults = document.getElementById('no-results');
+        const resetFilterBtn = document.getElementById('reset-filter-btn');
+        const filterTabs = document.querySelectorAll('.filter-tab');
+
+        // Modal Elements
+        const modalBackdrop = document.getElementById('app-modal-backdrop');
+        const modalDialog = document.getElementById('app-modal-dialog');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const modalBadgeCategory = document.getElementById('modal-badge-category');
+        const modalAppIcon = document.getElementById('modal-app-icon');
+        const modalAppTitle = document.getElementById('modal-app-title');
+        const modalStatRating = document.getElementById('modal-stat-rating');
+        const modalStatDownloads = document.getElementById('modal-stat-downloads');
+        const modalStatAge = document.getElementById('modal-stat-age');
+        const modalStatMonetization = document.getElementById('modal-stat-monetization');
+        const modalAppDescription = document.getElementById('modal-app-description');
+        const modalAppFeatures = document.getElementById('modal-app-features');
+        const modalPlaystoreLink = document.getElementById('modal-playstore-link');
+        const modalShareBtn = document.getElementById('modal-share-btn');
+        const modalCopyLinkBtn = document.getElementById('modal-copy-link-btn');
+        const modalBannerBg = document.getElementById('modal-banner-bg');
+
+        // Helper to render icon HTML with image and gradient glyph fallback
+        function renderIconMarkup(app, sizeClasses = 'w-16 h-16', roundedClass = 'rounded-2xl', textClass = 'text-2xl') {
+            if (app.iconImg && app.iconImg.trim() !== '') {
+                return `
+                    <div class="${sizeClasses} ${roundedClass} p-1 bg-white shadow-md flex items-center justify-center flex-shrink-0 border border-slate-200 overflow-hidden relative group-hover:scale-105 transition-transform">
+                        <img src="${app.iconImg}" alt="${app.title}" class="w-full h-full object-cover ${roundedClass}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="hidden w-full h-full ${roundedClass} ${app.iconBgClass} text-white font-extrabold items-center justify-center ${textClass}">
+                            <span>${app.iconGlyph}</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="${sizeClasses} ${roundedClass} ${app.iconBgClass} p-1 text-white font-extrabold flex items-center justify-center ${textClass} shadow-lg shadow-black/10 group-hover:scale-105 transition-transform flex-shrink-0 border border-white/20">
+                        <span>${app.iconGlyph}</span>
+                    </div>
+                `;
+            }
+        }
+
+        // Render Apps Grid
+        function renderApps() {
+            const filtered = APPS_DATABASE.filter(app => {
+                const matchesCat = currentCategory === 'all' || app.category === currentCategory;
+                const matchesSearch = searchQuery === '' || 
+                    app.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    app.categoryLabel.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    app.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesCat && matchesSearch;
+            });
+
+            appsCountBadge.textContent = `${filtered.length} App${filtered.length === 1 ? '' : 's'}`;
+
+            if (filtered.length === 0) {
+                appsGrid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            appsGrid.innerHTML = filtered.map(app => `
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 cursor-pointer relative overflow-hidden" onclick="openAppModal('${app.id}')">
+                    
+                    <!-- Top Ambient Gradient Accent -->
+                    <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${app.iconGradient} opacity-15 blur-2xl group-hover:opacity-30 transition-opacity"></div>
+                    
+                    <div>
+                        <!-- Header Row: Icon + Badge -->
+                        <div class="flex items-start justify-between gap-4 mb-4 relative z-10">
+                            ${renderIconMarkup(app, 'w-16 h-16', 'rounded-2xl', 'text-2xl')}
+                            
+                            <div class="flex flex-col items-end gap-1.5">
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">
+                                    ${app.badgeText}
+                                </span>
+                                <span class="text-xs font-bold text-amber-500 flex items-center gap-1">
+                                    <i class="fa-solid fa-star text-[10px]"></i> ${app.rating}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- App Title & Category -->
+                        <div class="mb-3 relative z-10">
+                            <span class="text-[11px] font-bold text-brand-600 uppercase tracking-wider block mb-1">
+                                ${app.categoryLabel}
+                            </span>
+                            <h3 class="text-xl font-display font-bold text-slate-900 group-hover:text-brand-600 transition-colors line-clamp-1">
+                                ${app.title}
+                            </h3>
+                        </div>
+
+                        <!-- Short Description -->
+                        <p class="text-slate-600 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-4 relative z-10 font-normal">
+                            ${app.shortDesc}
+                        </p>
+
+                        <!-- Tag Pills -->
+                        <div class="flex flex-wrap gap-1.5 mb-5 relative z-10">
+                            ${app.tags.slice(0, 3).map(tag => `
+                                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-600 border border-slate-200">
+                                    #${tag}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Bottom Action Bar -->
+                    <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between gap-2 relative z-10">
+                        <div class="text-xs text-slate-500 font-medium flex items-center gap-3">
+                            <span title="Installs"><i class="fa-solid fa-download text-[11px] mr-1 text-slate-400"></i>${app.installs}</span>
+                            <span>•</span>
+                            <span>${app.hasAds ? 'Ads' : 'No Ads'}</span>
+                        </div>
+
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-xs font-bold text-brand-600 group-hover:text-brand-700 flex items-center gap-1">
+                                View Details <i class="fa-solid fa-chevron-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            `).join('');
+        }
+
+        // Open App Modal
+        window.openAppModal = function(appId) {
+            const app = APPS_DATABASE.find(a => a.id === appId);
+            if (!app) return;
+            activeApp = app;
+
+            // Fill Content
+            modalBadgeCategory.textContent = app.categoryLabel;
+            modalAppTitle.textContent = app.title;
+            modalStatRating.innerHTML = `${app.rating} <i class="fa-solid fa-star text-amber-500 text-xs"></i>`;
+            modalStatDownloads.textContent = app.installs;
+            modalStatAge.textContent = app.age;
+            modalStatMonetization.textContent = app.hasAds ? 'Free / Ads' : 'Free';
+            modalAppDescription.textContent = app.fullDesc;
+            
+            if (app.iconImg && app.iconImg.trim() !== '') {
+                modalAppIcon.className = `w-18 h-18 sm:w-20 sm:h-20 rounded-2xl p-1 bg-white border-2 border-white/80 shadow-2xl flex-shrink-0 flex items-center justify-center overflow-hidden relative`;
+                modalAppIcon.innerHTML = `
+                    <img src="${app.iconImg}" alt="${app.title}" class="w-full h-full object-cover rounded-xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="hidden w-full h-full rounded-xl ${app.iconBgClass} text-white font-extrabold items-center justify-center text-3xl">
+                        <span>${app.iconGlyph}</span>
+                    </div>
+                `;
+            } else {
+                modalAppIcon.className = `w-18 h-18 sm:w-20 sm:h-20 rounded-2xl ${app.iconBgClass} p-1 text-white font-extrabold flex items-center justify-center text-3xl shadow-xl flex-shrink-0 border-2 border-white`;
+                modalAppIcon.innerHTML = `<span>${app.iconGlyph}</span>`;
+            }
+
+            modalBannerBg.className = `h-44 sm:h-52 w-full relative p-6 flex flex-col justify-between overflow-hidden bg-gradient-to-br ${app.bannerGradient}`;
+
+            // Highlights
+            modalAppFeatures.innerHTML = app.features.map(f => `
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-1 flex-shrink-0"></i>
+                    <span class="text-slate-700 font-medium">${f}</span>
+                </li>
+            `).join('');
+
+            // Play store link
+            modalPlaystoreLink.href = app.url;
+
+            // Show Modal
+            modalBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalDialog.classList.remove('scale-95', 'opacity-0');
+                modalDialog.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Close App Modal
+        function closeAppModal() {
+            modalDialog.classList.remove('scale-100', 'opacity-100');
+            modalDialog.classList.add('scale-95', 'opacity-0');
+            modalBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                modalBackdrop.classList.add('hidden');
+                document.body.style.overflow = '';
+                activeApp = null;
+            }, 250);
+        }
+
+        modalCloseBtn.addEventListener('click', closeAppModal);
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) closeAppModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
+                closeAppModal();
+            }
+        });
+
+        // Toast Helper
+        function showToast(message, iconClass = 'fa-circle-check text-emerald-600') {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+
+            msgEl.textContent = message;
+            iconEl.className = `fa-solid ${iconClass} text-lg`;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Modal Action: Share
+        modalShareBtn.addEventListener('click', async () => {
+            if (!activeApp) return;
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: activeApp.title,
+                        text: `Check out ${activeApp.title} on Google Play Store!`,
+                        url: activeApp.url
+                    });
+                } catch (err) {
+                    // user dismissed share dialog
+                }
+            } else {
+                navigator.clipboard.writeText(activeApp.url);
+                showToast('Play Store Link copied to clipboard! 📋');
+            }
+        });
+
+        // Modal Action: Copy Link
+        modalCopyLinkBtn.addEventListener('click', () => {
+            if (!activeApp) return;
+            navigator.clipboard.writeText(activeApp.url);
+            showToast('Google Play Link copied! 🎉');
+        });
+
+        // Search Filter
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim();
+            if (searchQuery.length > 0) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+            renderApps();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            renderApps();
+        });
+
+        // Category Filter Tabs
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => {
+                    t.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-600/25');
+                    t.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+                });
+                tab.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-600/25');
+                tab.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+                
+                currentCategory = tab.getAttribute('data-category');
+                renderApps();
+            });
+        });
+
+        // Reset Filter
+        resetFilterBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            currentCategory = 'all';
+            filterTabs.forEach(t => {
+                if (t.getAttribute('data-category') === 'all') {
+                    t.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-md');
+                    t.classList.remove('bg-white', 'text-slate-700');
+                } else {
+                    t.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-md');
+                    t.classList.add('bg-white', 'text-slate-700');
+                }
+            });
+            renderApps();
+        });
+
+        // Initial Render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderApps();
+        });
+        renderApps();
+    </script>
 </body>
 </html>
