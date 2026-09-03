@@ -410,22 +410,29 @@
                     </ul>
                 </div>
 
-                <!-- Action CTA Bar -->
-                <div class="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-slate-200">
+                <!-- Action CTA Bar (Android & iOS) -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-4 border-t border-slate-200">
+                    <!-- Google Play Button -->
                     <a id="modal-playstore-link" href="#" target="_blank" rel="noopener noreferrer" 
-                       class="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                        <i class="fa-brands fa-google-play text-lg"></i>
-                        <span>Get on Google Play</span>
+                       class="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                        <i class="fa-brands fa-google-play text-base"></i>
+                        <span>Google Play</span>
                     </a>
 
-                    <div class="flex items-center gap-2 w-full sm:w-auto">
-                        <button id="modal-share-btn" class="flex-1 sm:flex-none py-3.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all">
+                    <!-- iOS App Store / Coming Soon Slot -->
+                    <div id="modal-ios-container" class="flex-1 flex">
+                        <!-- Injected dynamically -->
+                    </div>
+
+                    <!-- Share & Copy Actions -->
+                    <div class="flex items-center gap-2">
+                        <button id="modal-share-btn" class="flex-1 sm:flex-none py-3 px-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-sm font-semibold flex items-center justify-center gap-1.5 transition-all" title="Share App">
                             <i class="fa-solid fa-share-nodes text-brand-600"></i>
-                            <span class="sm:hidden">Share</span>
+                            <span class="sm:hidden text-xs">Share</span>
                         </button>
-                        <button id="modal-copy-link-btn" class="flex-1 sm:flex-none py-3.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all" title="Copy Store Link">
+                        <button id="modal-copy-link-btn" class="flex-1 sm:flex-none py-3 px-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-sm font-semibold flex items-center justify-center gap-1.5 transition-all" title="Copy Store Link">
                             <i class="fa-regular fa-copy text-brand-600"></i>
-                            <span class="sm:hidden">Copy Link</span>
+                            <span class="sm:hidden text-xs">Copy</span>
                         </button>
                     </div>
                 </div>
@@ -443,9 +450,7 @@
 
     <!-- Application Data & Logic -->
     <script>
-        // Full Apps Database with Google Play Store URLs & Custom Icon Images
-        // Tip: You can paste GitHub raw URLs (e.g. 'https://raw.githubusercontent.com/user/repo/main/icons/app1.png')
-        // or local folder paths (e.g. 'icons/word-connect.png') into 'iconImg'!
+        // Full Apps Database with Google Play & iOS Store URLs
         const APPS_DATABASE = [
             {
                 id: 'word-connect',
@@ -460,6 +465,7 @@
                 hasAds: true,
                 hasIap: true,
                 url: 'https://play.google.com/store/apps/details?id=com.puzzles.wordconnectgame',
+                iosUrl: null, // Coming Soon
                 iconImg: 'https://play-lh.googleusercontent.com/LHKzCy4J0QTaIOyQJl3n0r6VH3xrZp3wrzDYo5ocSY_CSEPRKYvYddZuMIbjf-S4bJ3S4HUiJtC6x1oEiABY=w240-h480-rw',
                 iconGradient: 'from-amber-500 via-orange-500 to-yellow-400',
                 bannerGradient: 'from-amber-600 via-orange-600 to-amber-800',
@@ -488,6 +494,7 @@
                 hasAds: true,
                 hasIap: true,
                 url: 'https://play.google.com/store/apps/details?id=com.crossmath.number.puzzle.challenge.daily.brain',
+                iosUrl: null, // Coming Soon
                 iconImg: 'https://play-lh.googleusercontent.com/uH_qJfdMZM4KgttT9OvXG_6EgBjaRqeOOm89-KSG1kTVyLYtc6aPgYP6ZH6SA7l2IEv3chcP-KeJIyy5ZQR7lg=w240-h480-rw',
                 iconGradient: 'from-indigo-600 via-purple-600 to-violet-500',
                 bannerGradient: 'from-indigo-600 via-purple-700 to-brand-800',
@@ -516,6 +523,7 @@
                 hasAds: true,
                 hasIap: true,
                 url: 'https://play.google.com/store/apps/developer?id=VidoStatus',
+                iosUrl: null, // Coming Soon
                 iconImg: 'https://play-lh.googleusercontent.com/7CI6AdxElRcwfgV7jeHWLOV5xSkq5-v2NYSF2bHZnKbSY6cQeH37llsOYeWlrFpdQ5gLpDSK0cuW9bdtB7A5okY=w240-h480-rw',
                 iconGradient: 'from-blue-500 via-indigo-600 to-cyan-500',
                 bannerGradient: 'from-blue-600 via-indigo-700 to-sky-800',
@@ -544,6 +552,7 @@
                 hasAds: true,
                 hasIap: true,
                 url: 'https://play.google.com/store/apps/details?id=com.momwell.pregnancy.pregnancytracker',
+                iosUrl: null, // Coming Soon
                 iconImg: 'https://play-lh.googleusercontent.com/hdCQKP8eZV-hU1EgEeD8ifUtu__sPcYRZJmHu9RE7JsjAbYO6L1YbKYb4ZnODhvHvEtycq8uvzIBcT9am6EZIg=w240-h480-rw',
                 iconGradient: 'from-pink-500 via-rose-500 to-fuchsia-600',
                 bannerGradient: 'from-pink-600 via-rose-600 to-purple-700',
@@ -572,6 +581,7 @@
                 hasAds: true,
                 hasIap: true,
                 url: 'https://play.google.com/store/apps/details?id=com.fruit.ninja.slicegame.hero',
+                iosUrl: null, // Coming Soon
                 iconImg: 'https://play-lh.googleusercontent.com/yX85jCnhKyoef5WWqH19G7B6iBoGeZ_YVv_gZn9rWQZYOoXwG3L1j593orQb9qoRA71UJBJV-dHCV9f38y11=w240-h480-rw',
                 iconGradient: 'from-red-500 via-orange-500 to-emerald-500',
                 bannerGradient: 'from-red-600 via-orange-600 to-amber-700',
@@ -600,6 +610,7 @@
                 hasAds: true,
                 hasIap: true,
                 url: 'https://play.google.com/store/apps/details?id=com.novelverse.read.books.stories',
+                iosUrl: 'https://apps.apple.com/in/app/storyread-fictions-novels/id6795077785', // Official iOS App Store
                 iconImg: 'https://play-lh.googleusercontent.com/OdWuOZ9qnHqEvgaF4Wh2csh5AKD1hhwzMG--BsWfyXbV8u0xSjk5Dvj3V9M8Gjf_gbn13kP_JuBTiDgXPGRk=s48-rw',
                 iconGradient: 'from-purple-600 via-indigo-600 to-blue-500',
                 bannerGradient: 'from-purple-600 via-indigo-700 to-blue-800',
@@ -628,6 +639,7 @@
                 hasAds: true,
                 hasIap: false,
                 url: 'https://play.google.com/store/apps/details?id=com.invitation.savethedate',
+                iosUrl: null, // Coming Soon
                 iconImg: 'https://play-lh.googleusercontent.com/sAzIrn7sNDn_DwUXEsMzAZWAhKWTazsEwa_U3xkWmqKjOkf2svaPbiB9vPurJdZcufoShg1zhLycTEvBPgT-kg=w240-h480-rw',
                 iconGradient: 'from-rose-400 via-pink-500 to-amber-300',
                 bannerGradient: 'from-rose-500 via-pink-600 to-red-600',
@@ -673,6 +685,7 @@
         const modalAppDescription = document.getElementById('modal-app-description');
         const modalAppFeatures = document.getElementById('modal-app-features');
         const modalPlaystoreLink = document.getElementById('modal-playstore-link');
+        const modalIosContainer = document.getElementById('modal-ios-container');
         const modalShareBtn = document.getElementById('modal-share-btn');
         const modalCopyLinkBtn = document.getElementById('modal-copy-link-btn');
         const modalBannerBg = document.getElementById('modal-banner-bg');
@@ -749,9 +762,25 @@
                         </div>
 
                         <!-- Short Description -->
-                        <p class="text-slate-600 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-4 relative z-10 font-normal">
+                        <p class="text-slate-600 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-3.5 relative z-10 font-normal">
                             ${app.shortDesc}
                         </p>
+
+                        <!-- Platform Availability Badges -->
+                        <div class="flex items-center gap-1.5 mb-4 relative z-10">
+                            <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <i class="fa-brands fa-google-play text-[10px]"></i> Android
+                            </span>
+                            ${app.iosUrl ? `
+                                <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-900 text-white shadow-xs">
+                                    <i class="fa-brands fa-apple text-[11px]"></i> iOS
+                                </span>
+                            ` : `
+                                <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-400 border border-slate-200" title="iOS version Coming Soon">
+                                    <i class="fa-brands fa-apple text-[11px] text-slate-400"></i> iOS Soon
+                                </span>
+                            `}
+                        </div>
 
                         <!-- Tag Pills -->
                         <div class="flex flex-wrap gap-1.5 mb-5 relative z-10">
@@ -823,6 +852,24 @@
             // Play store link
             modalPlaystoreLink.href = app.url;
 
+            // iOS Link or Coming Soon Badge
+            if (app.iosUrl) {
+                modalIosContainer.innerHTML = `
+                    <a href="${app.iosUrl}" target="_blank" rel="noopener noreferrer" 
+                       class="w-full py-3 px-4 rounded-2xl bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-black/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                        <i class="fa-brands fa-apple text-base sm:text-lg"></i>
+                        <span>App Store</span>
+                    </a>
+                `;
+            } else {
+                modalIosContainer.innerHTML = `
+                    <div class="w-full py-3 px-3 rounded-2xl bg-slate-100 text-slate-400 border border-slate-200/90 font-semibold text-xs flex items-center justify-center gap-1.5 cursor-not-allowed select-none" title="iOS version is in development">
+                        <i class="fa-brands fa-apple text-sm text-slate-400"></i>
+                        <span>iOS Coming Soon</span>
+                    </div>
+                `;
+            }
+
             // Show Modal
             modalBackdrop.classList.remove('hidden');
             setTimeout(() => {
@@ -876,27 +923,29 @@
         // Modal Action: Share
         modalShareBtn.addEventListener('click', async () => {
             if (!activeApp) return;
+            const shareUrl = activeApp.url;
             if (navigator.share) {
                 try {
                     await navigator.share({
                         title: activeApp.title,
-                        text: `Check out ${activeApp.title} on Google Play Store!`,
-                        url: activeApp.url
+                        text: `Check out ${activeApp.title}!`,
+                        url: shareUrl
                     });
                 } catch (err) {
                     // user dismissed share dialog
                 }
             } else {
-                navigator.clipboard.writeText(activeApp.url);
-                showToast('Play Store Link copied to clipboard! 📋');
+                navigator.clipboard.writeText(shareUrl);
+                showToast('App Link copied to clipboard! 📋');
             }
         });
 
         // Modal Action: Copy Link
         modalCopyLinkBtn.addEventListener('click', () => {
             if (!activeApp) return;
-            navigator.clipboard.writeText(activeApp.url);
-            showToast('Google Play Link copied! 🎉');
+            const textToCopy = activeApp.iosUrl ? `Android: ${activeApp.url}\niOS: ${activeApp.iosUrl}` : activeApp.url;
+            navigator.clipboard.writeText(textToCopy);
+            showToast('Store Link copied to clipboard! 🎉');
         });
 
         // Search Filter
