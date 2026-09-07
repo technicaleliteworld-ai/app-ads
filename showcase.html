@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevGen Ai Inc. - Official Mobile Apps</title>
+    <meta name="description" content="Explore official applications published by DevGen Ai Inc. on Google Play and Apple App Store.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern App Card Container */
+        .app-card-wrapper {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.25rem;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+        }
+        .app-card-wrapper:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Dark HUD Overlay Card exactly matching screenshot */
+        .analytics-hud-overlay {
+            background: rgba(43, 48, 59, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 1.1rem;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        /* AS Corner Badge */
+        .as-badge-tag {
+            background: #ffffff;
+            color: #ff5722;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        /* Red ADS badge */
+        .ads-badge-tag {
+            background: #e11d48;
+            color: #ffffff;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            border-radius: 4px;
+            padding: 2px 5px;
+            box-shadow: 0 2px 4px rgba(225, 29, 72, 0.35);
+        }
+
+        /* Glass Modal */
+        .glass-modal-box {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#ffffff] text-slate-900 font-sans antialiased min-h-screen p-4 sm:p-8 lg:p-12 selection:bg-indigo-600 selection:text-white">
+
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Header: Developer Title (Exact match to screenshot) -->
+        <header class="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-display font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                    <span>DevGen Ai Inc.</span>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <i class="fa-solid fa-circle-check text-[10px]"></i> Verified Publisher
+                    </span>
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Official Mobile Applications & Creative Utility Suite</p>
+            </div>
+
+            <!-- Top Store Button -->
+            <div class="flex items-center gap-3">
+                <a href="https://play.google.com/store/apps/developer?id=DevGen+Ai+Inc." target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]">
+                    <i class="fa-brands fa-google-play text-emerald-400"></i>
+                    <span>Google Play</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- 3-Card Grid (Exact screenshot match) -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            
+            <!-- CARD 1: Moving Pictures Motion Maker -->
+            <article class="app-card-wrapper cursor-pointer group flex flex-col justify-between" onclick="openModal('motion-maker')">
+                
+                <!-- Landscape Banner -->
+                <div class="relative h-48 sm:h-52 w-full bg-gradient-to-r from-[#fff3e0] via-[#ffe0b2] to-[#ffb74d] p-4 flex items-center justify-between overflow-hidden border-b border-orange-100">
+                    
+                    <!-- Left Banner Graphics -->
+                    <div class="z-10 max-w-[50%] space-y-1">
+                        <div class="flex items-center gap-1.5 text-orange-950 font-extrabold text-sm sm:text-base leading-tight font-display">
+                            <div class="w-6 h-6 rounded-lg bg-orange-500 text-white flex items-center justify-center text-xs shadow-xs">
+                                <i class="fa-solid fa-camera-rotate"></i>
+                            </div>
+                            <span>Motion Photo</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-black text-orange-900">Moving Editor</div>
+                        <p class="text-[10px] text-orange-950/80 font-semibold leading-tight pt-1">Bring Your Photos to Life with Smooth Motion</p>
+                        
+                        <!-- Mini Feature Icons -->
+                        <div class="flex items-center gap-1 pt-1.5 text-[8px] font-bold text-orange-900">
+                            <span class="px-1.5 py-0.5 rounded bg-white/70 backdrop-blur-xs">HD</span>
+                            <span class="px-1.5 py-0.5 rounded bg-white/70 backdrop-blur-xs">Filters</span>
+                            <span class="px-1.5 py-0.5 rounded bg-white/70 backdrop-blur-xs">Music</span>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <span class="text-[9px] font-black px-2.5 py-1 rounded-full bg-orange-600 text-white shadow-xs">
+                                Create. Edit. Animate. Share!
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Right Phone Mockup Illustration -->
+                    <div class="relative w-28 h-32 -mr-3 flex items-center justify-center pointer-events-none">
+                        <div class="w-20 h-28 bg-white rounded-xl shadow-md border border-orange-200 rotate-6 p-1 flex flex-col items-center justify-center text-center">
+                            <div class="w-full h-18 bg-gradient-to-tr from-orange-400 to-amber-300 rounded-lg flex items-center justify-center text-white text-xl">
+                                <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                            </div>
+                            <span class="text-[8px] font-bold text-slate-800 mt-1">Live Motion</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Dark HUD Badge (Top Right) -->
+                    <div class="absolute top-2.5 right-2.5 analytics-hud-overlay p-3 text-white z-20 w-44 sm:w-48 shadow-2xl transition-transform group-hover:scale-105 duration-300">
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-left">
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Installs</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-white leading-tight font-heading">360</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">D/I</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-white leading-tight font-heading">&lt; 100</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Age</div>
+                                <div class="text-[11px] font-semibold text-slate-100 leading-tight">3 years</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Category</div>
+                                <div class="text-[11px] font-semibold text-slate-100 leading-tight truncate">Entertainment</div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom AS Badge -->
+                        <div class="flex items-center justify-end mt-2 pt-1 border-t border-white/10">
+                            <div class="as-badge-tag px-2 py-0.5 text-[10px] flex items-center justify-center leading-none">
+                                <span>AS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom App Info Row -->
+                <div class="p-4 sm:p-5 flex items-center gap-3.5 bg-white">
+                    
+                    <!-- App Icon (Pink Squircle with 'M') -->
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#ec4899] via-[#f43f5e] to-[#e11d48] p-2 flex items-center justify-center shadow-md flex-shrink-0 border border-pink-200">
+                        <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white">
+                            <path d="M4 19V5l8 7 8-7v14h-4V9.8l-4 3.5-4-3.5V19H4z"/>
+                        </svg>
+                    </div>
+
+                    <!-- Title & Developer -->
+                    <div class="overflow-hidden flex-1">
+                        <h2 class="font-display font-bold text-slate-900 text-base sm:text-[17px] leading-snug truncate group-hover:text-indigo-600 transition-colors">
+                            Moving Pictures Motion Maker
+                        </h2>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">DevGen Ai Inc.</p>
+                    </div>
+
+                    <!-- Arrow Action -->
+                    <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-slate-900 group-hover:text-white text-slate-400 flex items-center justify-center transition-all flex-shrink-0">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- CARD 2: Bandhan: Find Life Partner -->
+            <article class="app-card-wrapper cursor-pointer group flex flex-col justify-between" onclick="openModal('bandhan')">
+                
+                <!-- Landscape Banner -->
+                <div class="relative h-48 sm:h-52 w-full bg-gradient-to-r from-[#fff1f2] via-[#ffe4e6] to-[#fecdd3] p-4 flex items-center justify-between overflow-hidden border-b border-rose-100">
+                    
+                    <!-- Left Banner Graphics -->
+                    <div class="z-10 max-w-[50%] space-y-1">
+                        <div class="flex items-center gap-1.5 text-rose-950 font-extrabold text-lg sm:text-xl leading-tight font-display">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-xs shadow-xs">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <span class="text-rose-600 font-black">Bandhan</span>
+                        </div>
+                        <div class="text-[11px] font-bold tracking-widest text-slate-600 uppercase">M A T R I M O N Y</div>
+                        <p class="text-[10px] text-rose-900/80 font-semibold leading-tight pt-1">True Connections. Lifelong Relationships.</p>
+                        
+                        <div class="pt-2">
+                            <span class="text-[9px] font-bold px-2.5 py-1 rounded-full bg-rose-600 text-white shadow-xs inline-flex items-center gap-1">
+                                <i class="fa-solid fa-shield-halved text-[8px]"></i> 100% Verified Profiles
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Right Graphic Illustration -->
+                    <div class="relative w-28 h-32 -mr-3 flex items-center justify-center pointer-events-none">
+                        <div class="w-20 h-20 rounded-full bg-white/90 border-2 border-rose-300 shadow-md flex items-center justify-center text-rose-500 text-3xl">
+                            <i class="fa-solid fa-heart text-2xl text-rose-500 animate-pulse"></i>
+                        </div>
+                    </div>
+
+                    <!-- Floating Dark HUD Badge (Top Right) -->
+                    <div class="absolute top-2.5 right-2.5 analytics-hud-overlay p-3 text-white z-20 w-44 sm:w-48 shadow-2xl transition-transform group-hover:scale-105 duration-300">
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-left">
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Installs</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-white leading-tight font-heading">&lt; 100</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">D/I</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-white leading-tight font-heading">&lt; 100</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Age</div>
+                                <div class="text-[11px] font-semibold text-slate-100 leading-tight">1 month</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Category</div>
+                                <div class="text-[11px] font-semibold text-slate-100 leading-tight truncate">Social</div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom AS Badge -->
+                        <div class="flex items-center justify-end mt-2 pt-1 border-t border-white/10">
+                            <div class="as-badge-tag px-2 py-0.5 text-[10px] flex items-center justify-center leading-none">
+                                <span>AS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom App Info Row -->
+                <div class="p-4 sm:p-5 flex items-center gap-3.5 bg-white">
+                    
+                    <!-- App Icon (Pink Heart Squircle) -->
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 via-rose-500 to-red-500 p-2 flex items-center justify-center shadow-md flex-shrink-0 border border-rose-200">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-rose-500 text-lg shadow-xs">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+
+                    <!-- Title & Developer -->
+                    <div class="overflow-hidden flex-1">
+                        <h2 class="font-display font-bold text-slate-900 text-base sm:text-[17px] leading-snug truncate group-hover:text-indigo-600 transition-colors">
+                            Bandhan: Find Life Partner
+                        </h2>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">DevGen Ai Inc.</p>
+                    </div>
+
+                    <!-- Arrow Action -->
+                    <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-slate-900 group-hover:text-white text-slate-400 flex items-center justify-center transition-all flex-shrink-0">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- CARD 3: Advance PDF Converter 2026 -->
+            <article class="app-card-wrapper cursor-pointer group flex flex-col justify-between" onclick="openModal('pdf-converter')">
+                
+                <!-- Landscape Banner -->
+                <div class="relative h-48 sm:h-52 w-full bg-gradient-to-r from-[#eef2ff] via-[#e0e7ff] to-[#c7d2fe] p-4 flex items-center justify-between overflow-hidden border-b border-indigo-100">
+                    
+                    <!-- Left Banner Graphics -->
+                    <div class="z-10 max-w-[50%] space-y-1">
+                        <div class="flex items-center gap-1.5 text-indigo-950 font-extrabold text-sm sm:text-base leading-tight font-display">
+                            <div class="w-6 h-6 rounded-lg bg-red-600 text-white flex items-center justify-center text-[10px] font-black shadow-xs">
+                                PDF
+                            </div>
+                            <span>PDF Converter</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-black text-indigo-950">Convert to PDF</div>
+                        <p class="text-[10px] text-indigo-950/80 font-semibold leading-tight pt-1">Powerful Tools: Edit, Organize & Scan</p>
+                        
+                        <!-- Feature pills -->
+                        <div class="flex items-center gap-1 pt-1.5 text-[8px] font-bold text-indigo-900">
+                            <span class="px-1.5 py-0.5 rounded bg-white/70 backdrop-blur-xs">Merge</span>
+                            <span class="px-1.5 py-0.5 rounded bg-white/70 backdrop-blur-xs">Compress</span>
+                            <span class="px-1.5 py-0.5 rounded bg-white/70 backdrop-blur-xs">OCR</span>
+                        </div>
+
+                        <div class="pt-2">
+                            <span class="text-[9px] font-black px-2.5 py-1 rounded-full bg-indigo-600 text-white shadow-xs">
+                                Document Workspace
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Right Phone Mockup Illustration -->
+                    <div class="relative w-28 h-32 -mr-3 flex items-center justify-center pointer-events-none">
+                        <div class="w-18 h-28 bg-white rounded-xl shadow-md border border-indigo-200 rotate-6 p-1 flex flex-col items-center justify-between">
+                            <div class="w-full h-8 bg-indigo-600 rounded-md flex items-center justify-center text-white text-xs font-bold">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+                            <div class="w-full space-y-1 my-1">
+                                <div class="w-full h-1 bg-slate-200 rounded"></div>
+                                <div class="w-3/4 h-1 bg-slate-200 rounded"></div>
+                            </div>
+                            <span class="text-[7px] font-black text-red-600">PDF 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Dark HUD Badge (Top Right) -->
+                    <div class="absolute top-2.5 right-2.5 analytics-hud-overlay p-3 text-white z-20 w-44 sm:w-48 shadow-2xl transition-transform group-hover:scale-105 duration-300">
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-left">
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Installs</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-white leading-tight font-heading">1.2k</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">D/I</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-white leading-tight font-heading">&lt; 100</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Age</div>
+                                <div class="text-[11px] font-semibold text-slate-100 leading-tight">3 years</div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">Category</div>
+                                <div class="text-[11px] font-semibold text-slate-100 leading-tight truncate">Productivity</div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom ADS + AS Badges -->
+                        <div class="flex items-center justify-between mt-2 pt-1 border-t border-white/10">
+                            <div class="ads-badge-tag">
+                                ADS
+                            </div>
+                            <div class="as-badge-tag px-2 py-0.5 text-[10px] flex items-center justify-center leading-none">
+                                <span>AS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom App Info Row -->
+                <div class="p-4 sm:p-5 flex items-center gap-3.5 bg-white">
+                    
+                    <!-- App Icon (PDF Squircle) -->
+                    <div class="w-14 h-14 rounded-2xl bg-white p-1.5 flex flex-col items-center justify-center shadow-md flex-shrink-0 border border-slate-200">
+                        <div class="w-full h-full rounded-xl bg-gradient-to-tr from-red-600 via-rose-600 to-blue-700 text-white flex flex-col items-center justify-center shadow-xs">
+                            <i class="fa-solid fa-file-pdf text-xl"></i>
+                            <span class="text-[7px] font-black tracking-tighter text-yellow-300">ADVANCE</span>
+                        </div>
+                    </div>
+
+                    <!-- Title & Developer -->
+                    <div class="overflow-hidden flex-1">
+                        <h2 class="font-display font-bold text-slate-900 text-base sm:text-[17px] leading-snug truncate group-hover:text-indigo-600 transition-colors">
+                            Advance PDF Converter 2026
+                        </h2>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">DevGen Ai Inc.</p>
+                    </div>
+
+                    <!-- Arrow Action -->
+                    <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-slate-900 group-hover:text-white text-slate-400 flex items-center justify-center transition-all flex-shrink-0">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div>
+                © 2026 DevGen Ai Inc. All rights reserved. Available on Google Play & App Store.
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://play.google.com/store/apps/developer?id=DevGen+Ai+Inc." target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 font-medium">Google Play Developer Page</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Interactive App Details & QR Code Modal -->
+    <div id="app-modal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div id="modal-box" class="glass-modal-box rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative transition-all duration-300 transform scale-95 opacity-0 my-auto">
+            
+            <!-- Modal Header -->
+            <div id="modal-header-banner" class="h-36 sm:h-40 w-full relative p-5 flex flex-col justify-between overflow-hidden">
+                <div class="relative z-10 flex justify-between items-center">
+                    <span id="modal-cat" class="px-3 py-1 rounded-full text-xs font-bold bg-white/80 backdrop-blur-md text-slate-900 shadow-xs">
+                        Category
+                    </span>
+                    <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+
+                <div class="relative z-10 flex items-end gap-3.5">
+                    <div id="modal-icon-slot" class="w-16 h-16 rounded-2xl p-1 bg-white border-2 border-white/80 shadow-xl flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    </div>
+                    <div class="overflow-hidden pb-0.5">
+                        <h3 id="modal-title" class="text-lg sm:text-xl font-display font-extrabold text-slate-900 truncate">App Title</h3>
+                        <p class="text-xs text-slate-600 font-semibold">DevGen Ai Inc.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-5 sm:p-6 bg-white space-y-4">
+                
+                <!-- Stats Row -->
+                <div class="grid grid-cols-4 gap-2 p-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-center">
+                    <div>
+                        <div id="modal-installs" class="text-sm font-bold text-slate-900 font-heading">360</div>
+                        <div class="text-[10px] text-slate-500 font-semibold">Installs</div>
+                    </div>
+                    <div>
+                        <div id="modal-di" class="text-sm font-bold text-slate-900 font-heading">&lt; 100</div>
+                        <div class="text-[10px] text-slate-500 font-semibold">D/I</div>
+                    </div>
+                    <div>
+                        <div id="modal-age" class="text-sm font-bold text-slate-900 font-heading">3 years</div>
+                        <div class="text-[10px] text-slate-500 font-semibold">Age</div>
+                    </div>
+                    <div>
+                        <div id="modal-rating" class="text-sm font-bold text-amber-500 flex items-center justify-center gap-1">4.8 <i class="fa-solid fa-star text-[10px]"></i></div>
+                        <div class="text-[10px] text-slate-500 font-semibold">Rating</div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">About App</h4>
+                    <p id="modal-desc" class="text-xs sm:text-sm text-slate-700 leading-relaxed">Description goes here...</p>
+                </div>
+
+                <!-- QR Code Scan & Install -->
+                <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center gap-3.5">
+                    <img id="modal-qr" src="" alt="Scan QR" class="w-14 h-14 bg-white p-1 rounded-lg border border-slate-200 shadow-2xs flex-shrink-0" />
+                    <div class="text-xs text-slate-600">
+                        <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                            <i class="fa-solid fa-qrcode text-indigo-600"></i> Scan to Install on Smartphone
+                        </div>
+                        <div class="text-slate-500 text-[11px] mt-0.5">Point your phone camera to download directly from the store.</div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex items-center gap-2 pt-2">
+                    <a id="modal-play-btn" href="#" target="_blank" rel="noopener noreferrer" 
+                       class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.01]">
+                        <i class="fa-brands fa-google-play text-emerald-400"></i>
+                        <span>Get on Google Play</span>
+                    </a>
+                    <button onclick="copyAppStoreLink()" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>Copy Link</span>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notify" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white border border-slate-700 px-4 py-3 rounded-xl text-xs font-semibold flex items-center gap-2 shadow-2xl translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+        <span id="toast-text">Link copied to clipboard!</span>
+    </div>
+
+    <!-- App Data & Logic -->
+    <script>
+        const APPS = {
+            'motion-maker': {
+                title: 'Moving Pictures Motion Maker',
+                category: 'Entertainment',
+                installs: '360',
+                di: '< 100',
+                age: '3 years',
+                rating: '4.8',
+                desc: 'Bring your photos to life with smooth motion effects, cinematic filters, 4K HD export, and background music. Create stunning live wallpapers, double exposure animations, and viral reels in seconds.',
+                url: 'https://play.google.com/store/apps/details?id=com.moving_picture.photomotion',
+                bannerBg: 'bg-gradient-to-r from-orange-100 to-amber-200',
+                iconHtml: `
+                    <div class="w-full h-full rounded-xl bg-gradient-to-tr from-[#ec4899] via-[#f43f5e] to-[#e11d48] p-2 flex items-center justify-center shadow-md">
+                        <svg viewBox="0 0 24 24" class="w-7 h-7 fill-white"><path d="M4 19V5l8 7 8-7v14h-4V9.8l-4 3.5-4-3.5V19H4z"/></svg>
+                    </div>
+                `
+            },
+            'bandhan': {
+                title: 'Bandhan: Find Life Partner',
+                category: 'Social',
+                installs: '< 100',
+                di: '< 100',
+                age: '1 month',
+                rating: '4.9',
+                desc: 'Bandhan Matrimony connects individuals and families looking for trusted, verified life partners. Experience secure matchmaking, personalized compatibility matching, and confidential messaging.',
+                url: 'https://play.google.com/store/apps/details?id=com.bandhan.matrimonyapp',
+                bannerBg: 'bg-gradient-to-r from-pink-100 to-rose-200',
+                iconHtml: `
+                    <div class="w-full h-full rounded-xl bg-gradient-to-tr from-pink-500 via-rose-500 to-red-500 p-2 flex items-center justify-center shadow-md">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-rose-500 text-base shadow-xs"><i class="fa-solid fa-heart"></i></div>
+                    </div>
+                `
+            },
+            'pdf-converter': {
+                title: 'Advance PDF Converter 2026',
+                category: 'Productivity',
+                installs: '1.2k',
+                di: '< 100',
+                age: '3 years',
+                rating: '4.7',
+                desc: 'All-in-one document suite to convert Photos, Word, Excel, and Text to PDF. Merge multiple documents, split pages, compress file size with zero loss, and scan documents with high-precision OCR.',
+                url: 'https://play.google.com/store/apps/details?id=com.pdfconverter.createpdf.jpgtopdf',
+                bannerBg: 'bg-gradient-to-r from-indigo-100 to-blue-200',
+                iconHtml: `
+                    <div class="w-full h-full rounded-xl bg-gradient-to-tr from-red-600 via-rose-600 to-blue-700 text-white flex flex-col items-center justify-center shadow-md">
+                        <i class="fa-solid fa-file-pdf text-lg"></i>
+                        <span class="text-[6px] font-black text-yellow-300">ADVANCE</span>
+                    </div>
+                `
+            }
+        };
+
+        let currentActiveUrl = '';
+
+        function openModal(key) {
+            const app = APPS[key];
+            if (!app) return;
+            currentActiveUrl = app.url;
+
+            document.getElementById('modal-header-banner').className = `h-36 sm:h-40 w-full relative p-5 flex flex-col justify-between overflow-hidden ${app.bannerBg}`;
+            document.getElementById('modal-cat').textContent = app.category;
+            document.getElementById('modal-title').textContent = app.title;
+            document.getElementById('modal-installs').textContent = app.installs;
+            document.getElementById('modal-di').textContent = app.di;
+            document.getElementById('modal-age').textContent = app.age;
+            document.getElementById('modal-rating').innerHTML = `${app.rating} <i class="fa-solid fa-star text-[10px]"></i>`;
+            document.getElementById('modal-desc').textContent = app.desc;
+            document.getElementById('modal-icon-slot').innerHTML = app.iconHtml;
+            document.getElementById('modal-play-btn').href = app.url;
+            document.getElementById('modal-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(app.url)}`;
+
+            const modal = document.getElementById('app-modal');
+            const box = document.getElementById('modal-box');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                box.classList.remove('scale-95', 'opacity-0');
+                box.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('app-modal');
+            const box = document.getElementById('modal-box');
+            box.classList.remove('scale-100', 'opacity-100');
+            box.classList.add('scale-95', 'opacity-0');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        document.getElementById('app-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('app-modal')) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('app-modal').classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        function copyAppStoreLink() {
+            if (currentActiveUrl) {
+                navigator.clipboard.writeText(currentActiveUrl);
+                const toast = document.getElementById('toast-notify');
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+</html>
