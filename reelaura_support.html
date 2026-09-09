@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support & Help Center - ReelAura</title>
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --primary-gradient: linear-gradient(135deg, #6366f1 0%, #7c3aed 50%, #d946ef 100%);
+      --bg: #0b0918;
+      --card-bg: #151128;
+      --card-hover: #1c1735;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #2c254d;
+      --highlight: rgba(124, 58, 237, 0.15);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 30px 16px;
+    }
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+    }
+    .logo-badge span.reel {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 17px;
+    }
+    .logo-badge span.aura {
+      color: #c084fc;
+      font-weight: 800;
+      font-size: 17px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-3px);
+      border-color: #7c3aed;
+    }
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .contact-card h3 {
+      font-size: 17px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .contact-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .contact-card a.btn {
+      display: inline-block;
+      background: var(--primary-gradient);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13.5px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+    }
+    .contact-card a.btn:hover {
+      opacity: 0.92;
+    }
+    .faq-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 34px 28px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .faq-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #c084fc;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .faq-question {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .faq-answer {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .faq-answer a {
+      color: #a855f7;
+      text-decoration: none;
+    }
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+    .footer-links {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .footer-links a {
+      color: #c084fc;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    .copy {
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+    @media (max-width: 600px) {
+      body { padding: 20px 12px; }
+      h1 { font-size: 26px; }
+      .faq-section { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-badge">
+        <span>✨</span>
+        <span class="reel">Reel</span><span class="aura">Aura</span>
+        <span style="color: #64748b; font-size: 13px;">| Help Center</span>
+      </div>
+      <h1>Customer Support & Help</h1>
+      <p class="subtitle">Have a question, need assistance with your AI generations, or want to restore a purchase? We are here to help!</p>
+    </div>
+
+    <!-- Contact Cards -->
+    <div class="cards-grid">
+      <div class="contact-card">
+        <div class="card-icon">✉️</div>
+        <h3>Email Support</h3>
+        <p>Get in touch with our engineering and support team for quick assistance.</p>
+        <a href="mailto:support@cscodetech.cloud" class="btn">support@kmsteams.com</a>
+      </div>
+
+      
+
+      <div class="contact-card">
+        <div class="card-icon">⚡</div>
+        <h3>Response Time</h3>
+        <p>We typically respond to inquiries and bug reports within <strong>24 to 48 hours</strong>.</p>
+        <span style="display:inline-block; font-size: 13px; color: #10b981; font-weight: 600; padding: 6px 12px; background: rgba(16,185,129,0.12); border-radius: 8px;">Active Support</span>
+      </div>
+    </div>
+
+    <!-- Frequently Asked Questions -->
+    <div class="faq-section">
+      <h2>💡 Frequently Asked Questions (FAQ)</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">1. How do I create an AI Reel or Story?</div>
+        <div class="faq-answer">
+          Open ReelAura, tap <strong>"AI Video Reels"</strong> on the home dashboard or pick one of the quick presets. Enter your topic or prompt, choose your desired voice and language, tap <strong>"Generate Script"</strong>, and then tap <strong>"Render Reel"</strong>. Your multi-scene video will be rendered and saved to your device.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">2. How does the Virtual Fashion Try-On work?</div>
+        <div class="faq-answer">
+          Navigate to <strong>Fashion Studio</strong>, pick an outfit or saree style from the catalogue, and upload a clear, front-facing portrait of yourself. Our AI will photorealistically align the fabric, lighting, and drape onto your photo.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">3. How do I restore my VIP Purchases or Subscriptions?</div>
+        <div class="faq-answer">
+          If you reinstalled the app or switched devices:
+          <ol style="margin-left: 20px; margin-top: 6px;">
+            <li>Open ReelAura.</li>
+            <li>Go to <strong>Settings</strong> (gear icon).</li>
+            <li>Tap <strong>"Restore Purchases"</strong>.</li>
+          </ol>
+          Your active Apple App Store or Google Play subscription will be validated and your VIP status will be restored immediately.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">4. How do free trial credits work?</div>
+        <div class="faq-answer">
+          Every new installation receives complimentary free generation credits so you can experience ReelAura's features without payment. You can also earn extra bonus credits through daily check-ins, rewarded videos, or by upgrading to a VIP plan.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">5. What should I do if an AI generation fails or gets stuck?</div>
+        <div class="faq-answer">
+          Generations rely on high-performance cloud AI GPUs. If your connection drops or an error occurs:
+          <ul style="margin-left: 20px; margin-top: 6px;">
+            <li>Check your internet connection.</li>
+            <li>Go to <strong>Settings &gt; Storage &amp; Cache</strong> and tap <strong>"Clear Cache"</strong>.</li>
+            <li>If your quota was deducted without delivering a result, please email us with your <strong>Device ID</strong> (found at the bottom of Settings), and we will refund your credits.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">6. How do I request account or data deletion?</div>
+        <div class="faq-answer">
+           emailing us at <a href="mailto:support@cscodetech.cloud">support@cscodetech.cloud</a>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="footer-links">
+      <a href="mailto:support@cscodetech.cloud">Contact Us</a>
+      <div class="copy">
+        &copy; 2026 ReelAura •  All rights reserved.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
